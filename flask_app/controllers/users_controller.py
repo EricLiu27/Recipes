@@ -6,7 +6,7 @@ from flask_app.models.user_model import User
 from flask_bcrypt import Bcrypt        
 bcrypt = Bcrypt(app)     # we are creating an object called bcrypt, 
                          # which is made by invoking the function Bcrypt with our app as an argument
-from flask_app.models.user_model import User
+
 from flask_app.models.recipe_model import Recipe
 
 @app.route('/')

@@ -110,7 +110,7 @@ class Recipe:
             flash ('Date is required')
             is_valid = False
         if 'under_30' not in data:
-            flash('Under 30 minutes is required')
+            flash('Please answer yes or no')
             is_valid = False
         return is_valid
         

@@ -15,11 +15,15 @@ def dashboard():
     all_recipes = Recipe.get_all()
     return render_template ('recipes_dashboard.html', logged_user = logged_user, all_recipes=all_recipes)
 
+
+
 @app.route('/recipes/new')
 def new_recipe():
     if 'user_id' not in session:
         return redirect('/')
     return render_template ('recipes_new.html')
+
+
 
 @app.route('/recipes/create', methods = ['POST'])
 def create_recipe():
@@ -34,6 +38,8 @@ def create_recipe():
     Recipe.create(recipe_data)
     return redirect ('/recipes')
 
+
+
 @app.route('/recipes/<int:id>/view')
 def view_one_recipe(id):
     if 'user_id' not in session:
@@ -43,6 +49,8 @@ def view_one_recipe(id):
     }
     one_recipe = Recipe.get_one(data)
     return render_template('recipes_one.html', one_recipe = one_recipe)
+
+
 
 @app.route('/recipes/<int:id>/delete')
 def delete_recipe(id):
@@ -58,6 +66,8 @@ def delete_recipe(id):
     Recipe.delete(data)
     return redirect('/recipes')
 
+
+
 @app.route('/recipes/<int:id>/edit')
 def edit_recipe_form(id):
     if 'user_id' not in session:
@@ -70,6 +80,8 @@ def edit_recipe_form(id):
         flash('This is not your recipe! Unable to edit.')
         return redirect('/recipes')
     return render_template('recipes_edit.html', one_recipe=one_recipe)
+
+
 
 @app.route('/recipes/<int:id>/update', methods=['POST'])
 def update_recipe(id):

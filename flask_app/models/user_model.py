@@ -62,7 +62,7 @@ class User:
             is_valid = False
         #last name validation
         if len(data['last_name']) < 1:
-            flash('Last name required', 'reg')
+            flash('Last name is required', 'reg')
             is_valid = False
         elif len(data['last_name']) < 2:
             flash('Last name must be 2 characters at least', 'reg')
@@ -72,7 +72,7 @@ class User:
             is_valid = False
         #email validation
         if len(data['email']) < 1:
-            flash('Email required', 'reg')
+            flash('Email is required', 'reg')
             is_valid = False
         elif not EMAIL_REGEX.match(data['email']):
             flash('Email must be in proper format','reg')
@@ -85,7 +85,7 @@ class User:
         #password validation
         if len(data['password']) < 1:
             is_valid=False
-            flash('password required','reg')
+            flash('password is required','reg')
         elif len(data['password']) < 8:
             is_valid=False
             flash('password must be 8 characters or more','reg')
