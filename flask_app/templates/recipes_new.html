@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>parties posts</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container w-50 bg-success bg-gradient bg-opacity-75 mt-5 pb-3">
+        <div class="d-flex justify-content-between">
+            <h1>Add a New Recipe!</h1>
+            <div>
+                <a href="/recipes" class='btn btn-danger'>Back to Recipes</a>
+                <a href="/users/logout" class='btn btn-danger'>Logout</a>
+            </div>
+        </div>
+        {% for message in get_flashed_messages()%}
+        <p class="text-danger">{{message}}</p>
+        {% endfor %}
+        <form class='d-flex justify-content-between' action="/recipes/create" method='post'>
+            <div>
+                <div class="row mb-3">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id='name'>
+                </div>
+                <div class="row mb-3">
+                    <label for="description">Description</label>
+                    <textarea name="description" id='description'></textarea>
+                </div>
+                <div class="row mb-3">
+                    <label for="instructions">Instructions</label>
+                    <textarea name="instructions" id='instructions'></textarea>
+                </div>
+            </div>
+            <div>
+                <div class="row mb-3">
+                    <label for="date_cooked">Date Cooked/Made:</label>
+                    <input type="date" name="date_cooked" id='date_cooked'>
+                </div>
+                <div class="row mb-3">
+                    <p>under 30 minutes?</p>
+                    <div class='d-flex'>
+                        <label for="yes">Yes</label>
+                        <input type="radio" name="under_30" id='yes' value=1>
+                        <label class='ms-2' for="no">No</label>
+                        <input type="radio" name="under_30" id='no' value=0>
+                    </div>
+                </div>
+                <button class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
